@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # College Bus Management System
 
 A full-stack college transportation management system built with HTML, CSS, JavaScript, a Java built-in HTTP server, and MySQL 8.
@@ -264,3 +265,6 @@ See `DEPLOYMENT.md` for a practical deployment plan including GitHub, hosting, M
 - The project does not use localStorage for authentication; it uses secure HTTP-only session cookies.
 - The app keeps database credentials in environment variables instead of source code.
 - Sample data is included for easy setup, but production credentials should be replaced with secure values.
+=======
+# CLG-BUS-MANAGEMENT
+>>>>>>> dbacd6a20ef4acce17cb117db615d51ccd4147b3
