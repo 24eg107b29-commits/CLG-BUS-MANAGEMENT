@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buses | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div><h2>Campus Transport</h2></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a class="active" href="buses.html">Buses</a>
+        <a href="routes.html">Routes</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="registrations.html">Registrations</a>
+        <a href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Fleet</p>
+          <h1>Buses</h1>
+        </div>
+        <div class="user-pill"><span id="userBadge">Loading...</span></div>
+      </header>
+
+      <section class="panel-box">
+        <h3>Add or update bus</h3>
+        <form id="busForm" class="form-grid">
+          <input type="hidden" id="busId" />
+          <div><label>Bus Number<input id="bus_number" required /></label></div>
+          <div><label>Registration Number<input id="registration_number" required /></label></div>
+          <div><label>Capacity<input id="capacity" type="number" min="1" required /></label></div>
+          <div><label>Model<input id="model" required /></label></div>
+          <div><label>Status<select id="bus_status"><option value="active">Active</option><option value="maintenance">Maintenance</option><option value="inactive">Inactive</option></select></label></div>
+          <div><label>Assigned Driver<select id="driver_id"></select></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Save Bus</button><button class="btn btn-secondary" type="button" id="resetBusForm">Reset</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <div class="table-toolbar">
+          <h3>Bus list</h3>
+          <input id="busSearch" type="search" placeholder="Search by bus number or model" />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Bus No.</th><th>Registration</th><th>Capacity</th><th>Model</th><th>Status</th><th>Driver</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="busTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/buses.js"></script>
+</body>
+</html>

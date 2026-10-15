@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div>
+          <h2>Campus Transport</h2>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="buses.html">Buses</a>
+        <a href="routes.html">Routes</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="registrations.html">Registrations</a>
+        <a href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="user-pill">
+          <span id="userBadge">Loading...</span>
+        </div>
+      </header>
+
+      <section class="dashboard-grid">
+        <article class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></article>
+        <article class="stat-card"><span>Total Buses</span><strong id="totalBuses">0</strong></article>
+        <article class="stat-card"><span>Total Drivers</span><strong id="totalDrivers">0</strong></article>
+        <article class="stat-card"><span>Total Routes</span><strong id="totalRoutes">0</strong></article>
+        <article class="stat-card"><span>Active Registrations</span><strong id="activeRegistrations">0</strong></article>
+        <article class="stat-card"><span>Pending Fee Status</span><strong id="pendingFees">0</strong></article>
+      </section>
+
+      <section class="panel-box">
+        <h3>Operational summary</h3>
+        <p id="dashboardSummary">Loading live statistics...</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    async function loadDashboard() {
+      try {
+        const data = await apiFetch('/api/dashboard/stats');
+        const stats = data.stats || {};
+        document.getElementById('totalStudents').textContent = stats.total_students ?? 0;
+        document.getElementById('totalBuses').textContent = stats.total_buses ?? 0;
+        document.getElementById('totalDrivers').textContent = stats.total_drivers ?? 0;
+        document.getElementById('totalRoutes').textContent = stats.total_routes ?? 0;
+        document.getElementById('activeRegistrations').textContent = stats.active_registrations ?? 0;
+        document.getElementById('pendingFees').textContent = stats.pending_fees ?? 0;
+        document.getElementById('dashboardSummary').textContent = 'Live transport operations summary from the database.';
+      } catch (error) {
+        document.getElementById('dashboardSummary').textContent = error.message || 'Unable to load dashboard data.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await checkAuth();
+      await loadDashboard();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drivers | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div><h2>Campus Transport</h2></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="buses.html">Buses</a>
+        <a href="routes.html">Routes</a>
+        <a class="active" href="drivers.html">Drivers</a>
+        <a href="registrations.html">Registrations</a>
+        <a href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Crew</p>
+          <h1>Drivers</h1>
+        </div>
+        <div class="user-pill"><span id="userBadge">Loading...</span></div>
+      </header>
+
+      <section class="panel-box">
+        <h3>Add or update driver</h3>
+        <form id="driverForm" class="form-grid">
+          <input type="hidden" id="driverId" />
+          <div><label>Name<input id="driver_name" required /></label></div>
+          <div><label>Phone<input id="driver_phone" required /></label></div>
+          <div><label>License Number<input id="license_number" required /></label></div>
+          <div><label>Status<select id="driver_status"><option value="available">Available</option><option value="on_leave">On Leave</option><option value="unavailable">Unavailable</option></select></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Save Driver</button><button class="btn btn-secondary" type="button" id="resetDriverForm">Reset</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <div class="table-toolbar">
+          <h3>Driver list</h3>
+          <input id="driverSearch" type="search" placeholder="Search by name or license" />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Phone</th><th>License No.</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="driverTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/drivers.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrations | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div><h2>Campus Transport</h2></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="buses.html">Buses</a>
+        <a href="routes.html">Routes</a>
+        <a href="drivers.html">Drivers</a>
+        <a class="active" href="registrations.html">Registrations</a>
+        <a href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Applications</p>
+          <h1>Transport Registrations</h1>
+        </div>
+        <div class="user-pill"><span id="userBadge">Loading...</span></div>
+      </header>
+
+      <section class="panel-box">
+        <h3>New registration</h3>
+        <form id="registrationForm" class="form-grid">
+          <div><label>Student<select id="registration_student_id"></select></label></div>
+          <div><label>Route<select id="registration_route_id"></select></label></div>
+          <div><label>Preferred Bus<select id="registration_bus_id"></select></label></div>
+          <div><label>Notes<textarea id="registration_notes" rows="3"></textarea></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Submit Registration</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <div class="table-toolbar">
+          <h3>Registration list</h3>
+          <input id="registrationSearch" type="search" placeholder="Search by student or route" />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Student</th><th>Route</th><th>Bus</th><th>Status</th><th>Notes</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="registrationTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/registrations.js"></script>
+</body>
+</html>

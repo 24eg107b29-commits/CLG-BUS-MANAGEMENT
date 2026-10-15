@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Java build output
+backend/out/
+backend/lib/*.jar
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

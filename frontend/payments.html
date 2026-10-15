@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fees & Payments | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div><h2>Campus Transport</h2></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="buses.html">Buses</a>
+        <a href="routes.html">Routes</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="registrations.html">Registrations</a>
+        <a class="active" href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Finance</p>
+          <h1>Fees & Payments</h1>
+        </div>
+        <div class="user-pill"><span id="userBadge">Loading...</span></div>
+      </header>
+
+      <section class="panel-box">
+        <h3>Record transport fee</h3>
+        <form id="feeForm" class="form-grid">
+          <div><label>Registration<select id="fee_registration_id"></select></label></div>
+          <div><label>Fee Amount<input id="fee_amount" type="number" min="0" step="0.01" required /></label></div>
+          <div><label>Due Date<input id="fee_due_date" type="date" required /></label></div>
+          <div><label>Status<select id="fee_status"><option value="pending">Pending</option><option value="paid">Paid</option><option value="overdue">Overdue</option></select></label></div>
+          <div class="span-two"><label>Notes<textarea id="fee_notes" rows="3"></textarea></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Save Fee</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <h3>Record payment</h3>
+        <form id="paymentForm" class="form-grid">
+          <div><label>Registration<select id="payment_registration_id"></select></label></div>
+          <div><label>Fee<select id="payment_fee_id"></select></label></div>
+          <div><label>Amount<input id="payment_amount" type="number" min="0" step="0.01" required /></label></div>
+          <div><label>Payment Date<input id="payment_date" type="date" required /></label></div>
+          <div><label>Method<select id="payment_method"><option value="cash">Cash</option><option value="upi">UPI</option><option value="card">Card</option></select></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Record Payment</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <div class="table-toolbar"><h3>Fee and payment history</h3></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Student</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Payment Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="paymentTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/payments.js"></script>
+</body>
+</html>

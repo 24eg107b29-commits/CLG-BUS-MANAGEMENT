@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Routes | College Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap sidebar-brand">
+        <span class="brand-mark">CB</span>
+        <div><h2>Campus Transport</h2></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="students.html">Students</a>
+        <a href="buses.html">Buses</a>
+        <a class="active" href="routes.html">Routes</a>
+        <a href="drivers.html">Drivers</a>
+        <a href="registrations.html">Registrations</a>
+        <a href="payments.html">Fees & Payments</a>
+        <button id="logoutBtn" class="nav-logout">Logout</button>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar panel-header">
+        <div>
+          <p class="eyebrow">Operations</p>
+          <h1>Routes</h1>
+        </div>
+        <div class="user-pill"><span id="userBadge">Loading...</span></div>
+      </header>
+
+      <section class="panel-box">
+        <h3>Add or update route</h3>
+        <form id="routeForm" class="form-grid">
+          <input type="hidden" id="routeId" />
+          <div><label>Route Name<input id="route_name" required /></label></div>
+          <div><label>Start Location<input id="start_location" required /></label></div>
+          <div><label>Destination<input id="destination" required /></label></div>
+          <div><label>Distance (km)<input id="distance_km" type="number" min="1" step="0.1" required /></label></div>
+          <div><label>Duration (minutes)<input id="duration_minutes" type="number" min="1" required /></label></div>
+          <div><label>Assigned Bus<select id="assigned_bus_id"></select></label></div>
+          <div class="span-two"><label>Stops (comma separated)<textarea id="stops" rows="3" placeholder="Library Corner, Main gate, Hostel block"></textarea></label></div>
+          <div class="form-actions span-two"><button class="btn btn-primary" type="submit">Save Route</button><button class="btn btn-secondary" type="button" id="resetRouteForm">Reset</button></div>
+        </form>
+      </section>
+
+      <section class="panel-box">
+        <div class="table-toolbar">
+          <h3>Route list</h3>
+          <input id="routeSearch" type="search" placeholder="Search by route or destination" />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Route</th><th>Start</th><th>Destination</th><th>Distance</th><th>Duration</th><th>Bus</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="routeTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/routes.js"></script>
+</body>
+</html>
